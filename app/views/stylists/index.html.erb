@@ -1,0 +1,36 @@
+<h1>スタイリスト一覧</h1>
+<%= search_form_for @q do |f| %>
+  <%= f.label :content, "Keyword" %>
+  <%= f.search_field :content_cont %>
+
+  <%= f.label :age %>
+  <%= f.number_field :age_gteq, in: 10..50 %>以上〜
+  <%= f.number_field :age_lt, min: 10, max: 50 %>未満
+
+  <!--ここから追加-->
+  <%= f.label :gender %>
+　<%= f.radio_button :gender_eq, '', {:checked => true} %>指定なし
+  <%= f.radio_button :gender_eq, 1 %>男性
+  <%= f.radio_button :gender_eq, 2 %>女性
+  <!--ここまで追加-->
+
+  <%= f.submit "検索" %>
+<% end %>
+<table>
+<tr>
+  <th>プロフィール写真<th>
+  <th>名前<th>
+  <th>年齢<th>
+  <th>性別<th>
+  <th>自己紹介・経歴<th>
+</tr>
+<% @stylists.each do |stylist| %>
+  <tr>
+    <td><%= stylist.name %></td>
+    <td><%= stylist.age %></td>
+    <td><%= stylist.gender %></td>
+    <td><%= stylist.content %></td>
+    <td><%= link_to '詳細を見る', stylist_path(stylist.id) %>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,14 @@
+<%= form_with(model: @review, url: reviews_path, local: true) do |form| %>
+  <%= rating_for @stylist, 'clothes' %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :comment %><br />
+    <%= f.text_field :comment %>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

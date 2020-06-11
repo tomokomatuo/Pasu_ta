@@ -1,0 +1,15 @@
+<h1>作成したスタイリストのレビュー一覧</h1>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>レビュー</th>
+  </tr>
+
+<% @stylist.reviews.each do |r| %>
+  <tr>
+    <td><%= r.title %></td>
+    <td><%= r.comment %></td>
+    <td><%= link_to '編集', edit_review_path %></td>
+    <td><%= link_to '削除', review_path, method: :delete %></td>
+  </tr>
+  <% end %>

@@ -1,0 +1,12 @@
+<h1>プロフィール画面</h1>
+
+<%= @seeker.name %>
+<%= @seeker.gender %>
+<%= @seeker.age %>
+
+  
+<% if @seeker.id.present? %>
+  <%= link_to 'プロフィールを編集する', edit_seeker_path(current_user.id) %>
+  <%= link_to 'スタイリスト一覧をみる', stylists_path %>
+  <%= link_to 'レビューを管理する', new_review_path %>
+<% end %>
