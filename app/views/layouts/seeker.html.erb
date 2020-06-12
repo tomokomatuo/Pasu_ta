@@ -10,6 +10,7 @@
   </head>
 
   <body>
-  <td><%= link_to "退会する", user, new_user_registration_path, data: { confirm: "本当に退会しますか?" }, method: :delete %></td>
+  
+  <%= yield %>
   </body>
 </html>

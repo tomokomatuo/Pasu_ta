@@ -1,4 +1,5 @@
 class SeekersController < ApplicationController
+  layout 'seeker'
   before_action :set_seeker, only: [:edit, :show, :update]
   def index
     @q = Seeker.ransack(params[:q])
@@ -6,38 +7,41 @@ class SeekersController < ApplicationController
   end
   
   def new
-    @user = User.find(params[:format])
-    # @seeker = Seeker.new
-    @user.build_seeker
+    @seeker = Seeker.new
   end
+  
   def create
+    # binding.irb
     @seeker = Seeker.new(seeker_params)
-    @seeker.id = current_user.id
+    @seeker.user_id = current_user.id
     if @seeker.save
-      redirect_to seeker_path(@seeker)
+      redirect_to seeker_path(@seeker.id)
     else
       render :new
     end
   end
-  
+
   def show
+    # binding.irb
   end
   
   def edit
   end
 
   def update
+    if @seeker.update(seeker_params)
+      redirect_to seeker_path(user.id)
+    else
+      render :edit
+    end
   end
 
   private
   def seeker_params
-    params(:user).permit(:id, :email, seekers_attributes: [:id, :name, :icon, 
-                                 :clothes_image, :address, :age, :gender, :phone_number, :_destroy, :user_id])
+    params.require(:seeker).permit(:id, :name, :icon, :content, :address, :age, :gender, :phone_number, :user_id)
   end
+
   def set_seeker
     @seeker = Seeker.find(params[:id])
-  end
-  def set_user
-    @user = User.find(params[:id])
   end
 end
