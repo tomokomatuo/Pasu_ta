@@ -4,11 +4,6 @@
 <%= @seeker.gender %>
 <%= @seeker.age %>
 
-  
-<% if @seeker.id == current_user.id %>
-  <%= link_to 'プロフィールを編集する', edit_seeker_path(@seeker.id) %>
-  <%= link_to 'スタイリスト一覧をみる', stylists_path %>
-  <%= link_to 'レビューを管理する' %>
-<% else %>
-<%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @seeker.user.id), method: :post %>
+<% if @seeker.id != current_user.id? %> 
+<%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @seeker.user.id), method: :post %>
 <% end %>

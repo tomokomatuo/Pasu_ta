@@ -12,10 +12,11 @@ class ApplicationController < ActionController::Base
   # end
  
   def after_sign_in_path_for(resource)
+    binding.irb
     if current_user.adviser?
-      seekers_path(resource)
+      seekers_path
     else
-      stylists_path(resource) 
+      stylists_path
     end
   end
 

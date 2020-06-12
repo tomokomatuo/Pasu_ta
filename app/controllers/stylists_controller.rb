@@ -23,7 +23,7 @@ class StylistsController < ApplicationController
   end
 
   def show
-    # binding.irb
+    # @reviews = Reviews.all
   end
   
   def edit

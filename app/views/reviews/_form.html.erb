@@ -1,5 +1,5 @@
-<%= form_with(model: @review, url: reviews_path, local: true) do |form| %>
-  <%= rating_for @stylist, 'clothes' %>
+<%= form_with(model: @review, url: reviews_path, local: true) do |f| %>
+    <%= f.hidden_field :stylist_id %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -9,6 +9,6 @@
     <%= f.text_field :comment %>
   </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

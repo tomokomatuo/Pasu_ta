@@ -1,3 +1,8 @@
+<% if current_user.adviser? %>
+  <%= link_to '戻る' %>
+<% else %>
+  <%= link_to '戻る' %>
+<% end %>
 <% if @over_ten %>
   <%= link_to '以前のメッセージ', '?m=all' %>
 <% end %>

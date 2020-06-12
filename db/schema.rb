@@ -82,9 +82,11 @@ ActiveRecord::Schema.define(version: 2020_06_11_093333) do
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.text "comment"
+    t.bigint "seeker_id"
     t.bigint "stylist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["seeker_id"], name: "index_reviews_on_seeker_id"
     t.index ["stylist_id"], name: "index_reviews_on_stylist_id"
   end
 
@@ -135,6 +137,7 @@ ActiveRecord::Schema.define(version: 2020_06_11_093333) do
 
   add_foreign_key "messages", "conversations"
   add_foreign_key "messages", "users"
+  add_foreign_key "reviews", "seekers"
   add_foreign_key "reviews", "stylists"
   add_foreign_key "seekers", "users"
   add_foreign_key "stylists", "users"

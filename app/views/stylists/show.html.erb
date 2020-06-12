@@ -5,10 +5,22 @@
 <%= @stylist.age %>
 
   
-<% if @stylist.id == current_user.id? %>
-  <%= link_to 'プロフィールを編集する', edit_stylist_path(@stylist.id) %>
-  <%= link_to '相談者一覧を見る', seekers_path %>
-  <%= link_to 'レビューを管理する' %>
-<% else %>
-<%= link_to 'メッセージ', conversations_path(sender_id: current_user.id, recipient_id: @stylist.user.id), method: :post %>
+<% if @stylist.id != current_user.id? %>
+<%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @stylist.user.id), method: :post %>
+<%= link_to '評価する', new_review_path %>
 <% end %>
+<h4><%= @stylist.user.nickname %>さんのレビュー一覧</h4>
+<table>
+  <tr>
+    <th>タイトル</th>
+    <th>レビュー</th>
+  </tr>
+  <% @stylist.reviews.each do |review| %>
+  <tr>
+    <td><%= review.title %></td>
+    <td><%= review.comment %></td>
+    <td><%= link_to '編集', edit_review_path(review.id) %></td>
+    <td><%= link_to '削除', review_path(review.id), method: :delete %></td>
+  </tr>
+  <% end %>
+</table>

@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_one :seeker, dependent: :destroy
   has_one :stylist, dependent: :destroy
+  has_many :reviews, dependent: :destroy
   acts_as_paranoid
 end

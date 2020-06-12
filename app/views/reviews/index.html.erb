@@ -4,12 +4,12 @@
     <th>タイトル</th>
     <th>レビュー</th>
   </tr>
-
-<% @stylist.reviews.each do |r| %>
+  <% current_user.seeker.reviews.each do |review| %>
   <tr>
-    <td><%= r.title %></td>
-    <td><%= r.comment %></td>
-    <td><%= link_to '編集', edit_review_path %></td>
-    <td><%= link_to '削除', review_path, method: :delete %></td>
+    <td><%= review.title %></td>
+    <td><%= review.comment %></td>
+    <td><%= link_to '編集', edit_review_path(review.id) %></td>
+    <td><%= link_to '削除', review_path(review.id), method: :delete %></td>
   </tr>
   <% end %>
+</table>
