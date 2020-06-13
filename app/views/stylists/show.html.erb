@@ -7,7 +7,9 @@
   
 <% if @stylist.id != current_user.id? %>
 <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @stylist.user.id), method: :post %>
-<%= link_to '評価する', new_review_path %>
+<%# binding.irb %>
+<%= link_to '評価する', new_review_path(stylist_id: @stylist.id) %>
+
 <% end %>
 <h4><%= @stylist.user.nickname %>さんのレビュー一覧</h4>
 <table>
@@ -19,8 +21,6 @@
   <tr>
     <td><%= review.title %></td>
     <td><%= review.comment %></td>
-    <td><%= link_to '編集', edit_review_path(review.id) %></td>
-    <td><%= link_to '削除', review_path(review.id), method: :delete %></td>
   </tr>
   <% end %>
 </table>

@@ -11,13 +11,13 @@
 
   <body>
     <% if current_user.adviser? %>
-      <%= link_to 'マイページ', seeker_path(current_user.seeker.id) %>
-      <%= link_to 'マイページ編集', edit_stylist_path(current_user.stylist.id) %> |
+      <%= link_to 'マイページ', seeker_path(current_user.id) %>
+      <%= link_to 'マイページ編集', edit_stylist_path(current_user.id) %> |
       <%= link_to '相談者一覧', seekers_path %> |
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
     <% else %>
-      <%= link_to 'マイページ', seeker_path(current_user.seeker.id) %> |
-      <%= link_to 'マイページ編集', edit_seeker_path(current_user.seeker.id) %> |
+      <%= link_to 'マイページ', seeker_path(current_user.id) %> |
+      <%= link_to 'マイページ編集', edit_seeker_path(current_user.id) %> |
       <%= link_to 'スタイリスト一覧', stylists_path %> |
       <%= link_to 'レビュー管理', reviews_path %> |
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

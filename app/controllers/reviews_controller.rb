@@ -7,14 +7,17 @@ class ReviewsController < ApplicationController
   end
   
   def new
-   @review = Review.new
+   @review = Review.new(stylist_id: params[:stylist_id])
+  #  binding.irb
   end
   
   def create
-    @review = current_user.seeker.reviews.create(stylist_id: params[:stylist_id])
-    binding.irb
+    @review = current_user.seeker.reviews.create(review_params)
+    # binding.irb
     if @review.save
       redirect_to reviews_path
+    else
+      render :new
     end
     # binding.irb
   end
@@ -23,7 +26,7 @@ class ReviewsController < ApplicationController
   end
   
   def update
-    if @review.update(params_review)
+    if @review.update(review_params)
       redirect_to reviews_path
     else
       render :edit

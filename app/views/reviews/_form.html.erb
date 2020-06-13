@@ -1,5 +1,5 @@
-<%= form_with(model: @review, url: reviews_path, local: true) do |f| %>
-    <%= f.hidden_field :stylist_id %>
+<%= form_with(model: @review, url: review_path, local: true) do |f| %>
+    <%= f.hidden_field :stylist_id, value: @review.stylist_id %>
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>

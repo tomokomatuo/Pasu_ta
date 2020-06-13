@@ -14,7 +14,7 @@ class StylistsController < ApplicationController
     # binding.irb
     @stylist = Stylist.new(stylist_params)
     @stylist.user_id = current_user.id
-    
+    # binding.irb
     if @stylist.save
       redirect_to stylist_path(@stylist.id)
     else
@@ -23,7 +23,7 @@ class StylistsController < ApplicationController
   end
 
   def show
-    # @reviews = Reviews.all
+    # binding.irb
   end
   
   def edit
