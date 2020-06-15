@@ -7,7 +7,6 @@
   
 <% if @stylist.id != current_user.id? %>
 <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @stylist.user.id), method: :post %>
-<%# binding.irb %>
 <%= link_to '評価する', new_review_path(stylist_id: @stylist.id) %>
 
 <% end %>

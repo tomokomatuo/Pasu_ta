@@ -7,3 +7,5 @@
 <% if @seeker.id != current_user.id? %> 
 <%= link_to 'メッセージを送る', conversations_path(sender_id: current_user.id, recipient_id: @seeker.user.id), method: :post %>
 <% end %>
+
+  

@@ -22,7 +22,7 @@ class SeekersController < ApplicationController
   end
 
   def show
-    # binding.irb
+    @users = User.all
   end
   
   def edit
