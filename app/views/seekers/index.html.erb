@@ -20,16 +20,20 @@
 <table>
 <tr>
   <th>プロフィール写真<th>
-  <th>名前<th>
+  <th>ニックネーム<th>
   <th>年齢<th>
   <th>性別<th>
   <th>服に関するお悩み<th>
 </tr>
 <% @seekers.each do |seeker| %>
   <tr>
-    <td><%= seeker.name %></td>
+    <td><%= seeker.nickname %></td>
+    <% unless @seeker.hide_age? %>
     <td><%= seeker.age %></td>
+    <% end %>
+    <% unless @seeker.hide_gender? %>
     <td><%= seeker.gender %></td>
+    <% end %>
     <td><%= seeker.content %></td>
     <td><%= link_to '詳細を見る', seeker_path(seeker.id) %>
   </tr>

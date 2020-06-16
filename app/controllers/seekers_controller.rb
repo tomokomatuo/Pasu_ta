@@ -11,7 +11,6 @@ class SeekersController < ApplicationController
   end
   
   def create
-    # binding.irb
     @seeker = Seeker.new(seeker_params)
     @seeker.user_id = current_user.id
     if @seeker.save
@@ -30,7 +29,7 @@ class SeekersController < ApplicationController
 
   def update
     if @seeker.update(seeker_params)
-      redirect_to seeker_path(user.id)
+      redirect_to seeker_path(@seeker)
     else
       render :edit
     end

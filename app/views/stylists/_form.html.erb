@@ -15,12 +15,23 @@
   </div>
   <div class="field">
     <%= f.label :年齢 %><br />
-    <%= select_tag(:age, options_for_select((10..50).to_a)) %>
+    <%= select_tag(:age, options_for_select((18..50).to_a)) %>
   </div>  
   <div class="field">
+    <%= f.label :年齢を非表示にする %>
+    <%= f.check_box :hide_age %> 
+    </div> 
+  <div class="field">
     <%= f.label :性別 %><br />
-    <%= f.text_field :gender %>
+    <%= f.label :男  %>
+    <%= f.radio_button :gender, :man %>
+    <%= f.label :女  %>
+    <%= f.radio_button :gender, :woman %>
   </div>
+  <div class="field">
+      <%= f.label :性別を非表示にする %>
+      <%= f.check_box :hide_gender %>
+    </div> 
   　<div class="field">
       <%= f.label :プロフィール写真 %> 
       <%= f.file_field :icon %>　

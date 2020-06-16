@@ -27,4 +27,7 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:adviser, :nickname])
   end
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
 end
